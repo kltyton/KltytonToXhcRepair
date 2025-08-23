@@ -5,6 +5,7 @@ import com.kltyton.kltytontoxhcrepair.util.ConfigExt;
 import immersive_aircraft.config.configEntries.BooleanConfigEntry;
 import immersive_machinery.config.Config;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,6 +15,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
+@Pseudo
 @Mixin(Config.class)
 public abstract class ConfigMixin implements ConfigExt {
     @Inject(method = "<init>", at = @At("RETURN"))

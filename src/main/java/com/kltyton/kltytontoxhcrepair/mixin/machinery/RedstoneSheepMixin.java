@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,6 +37,7 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
 
+@Pseudo
 @Mixin(RedstoneSheep.class)
 public abstract class RedstoneSheepMixin extends NavigatingMachine {
     @Unique

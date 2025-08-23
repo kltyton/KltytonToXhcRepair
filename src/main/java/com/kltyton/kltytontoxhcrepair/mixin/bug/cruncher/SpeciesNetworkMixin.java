@@ -10,12 +10,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Objects;
 
-
+@Pseudo
 @Mixin(SpeciesNetwork.Client.class)
 public class SpeciesNetworkMixin {
     @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/fabricmc/fabric/api/client/networking/v1/ClientPlayNetworking;registerGlobalReceiver(Lnet/minecraft/resources/ResourceLocation;Lnet/fabricmc/fabric/api/client/networking/v1/ClientPlayNetworking$PlayChannelHandler;)Z", ordinal = 1))

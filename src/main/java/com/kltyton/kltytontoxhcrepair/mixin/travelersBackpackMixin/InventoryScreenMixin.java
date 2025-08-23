@@ -21,6 +21,7 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Pseudo
 @Mixin(value = InventoryScreen.class, priority = 900)
 public abstract class InventoryScreenMixin extends EffectRenderingInventoryScreen<InventoryMenu> {
     public InventoryScreenMixin(InventoryMenu menu, Inventory playerInventory, Component title) {

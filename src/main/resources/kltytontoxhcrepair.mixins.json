@@ -8,7 +8,6 @@
     "boarentity.EntityMixin",
     "bug.MagicBagItemMixin",
     "bug.MagicBagMenuMixin",
-    "bug.bopbiomes.InternalBiomeAPIMixin",
     "bug.carry.CarryOnDataMixin",
     "bug.graveyard.SkeletonCreeperMixin",
     "bug.graveyard.SoapWashableHelperMixin",
