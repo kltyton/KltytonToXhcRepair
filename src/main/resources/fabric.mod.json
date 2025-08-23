@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "kltytontoxhcrepair",
+  "version": "${version}",
+  "name": "KltytonToXhcRepair",
+  "description": "A mod that fixes the Utopia mechanic",
+  "authors": [],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/kltytontoxhcrepair/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.kltyton.kltytontoxhcrepair.Kltytontoxhcrepair"
+    ]
+  },
+  "mixins": [
+    "kltytontoxhcrepair.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
