@@ -1,4 +1,4 @@
-package com.kltyton.fabricmixintest.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.travelersBackpackMixin;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.tiviacz.travelersbackpack.TravelersBackpack;
@@ -45,9 +45,9 @@ public abstract class InventoryScreenMixin extends EffectRenderingInventoryScree
         if (player != null) {
             if (Minecraft.getInstance().screen instanceof InventoryScreen && ComponentUtils.getComponentOptional(player).isPresent() && ComponentUtils.getComponentOptional(player).get().hasBackpack() && TravelersBackpack.enableIntegration()) {
                 ItemStack backpack = ComponentUtils.getComponentOptional(player).get().getBackpack();
-                context.renderItem(backpack, this.leftPos + 77 + 77, this.topPos + 62 - 18 - 36);
-                if (mouseX >= this.leftPos + 77 + 77 && mouseX < this.leftPos + 77 + 77 + 16 && mouseY >= this.topPos + 62 - 18 - 36 && mouseY < this.topPos + 62 - 18 - 36 + 16) {
-                    AbstractContainerScreen.renderSlotHighlight(context, this.leftPos + 77 + 77, this.topPos + 62 - 18 - 36, -1000);
+                context.renderItem(backpack, this.leftPos + 77 + 59, this.topPos + 62 - 18 - 36);
+                if (mouseX >= this.leftPos + 77 + 59 && mouseX < this.leftPos + 77 + 59 + 16 && mouseY >= this.topPos + 62 - 18 - 36 && mouseY < this.topPos + 62 - 18 - 36 + 16) {
+                    AbstractContainerScreen.renderSlotHighlight(context, this.leftPos + 77 + 59, this.topPos + 62 - 18 - 36, -1000);
                     List<Component> components = new ArrayList();
                     components.add(Component.translatable("screen.travelersbackpack.retrieve_backpack"));
                     context.renderTooltip(Minecraft.getInstance().font, components, Optional.of(new BackpackTooltipComponent(backpack)), mouseX, mouseY);
@@ -61,9 +61,9 @@ public abstract class InventoryScreenMixin extends EffectRenderingInventoryScree
                     }
 
                     ItemStack backpack = ComponentUtils.getWearingBackpack(player);
-                    context.renderItem(backpack, this.leftPos + 77 + 77, this.topPos + 62 - 18 - 36);
-                    if (mouseX >= this.leftPos + 77 + 77 && mouseX < this.leftPos + 77 + 77 + 16 && mouseY >= this.topPos + 62 - 18 - 36 && mouseY < this.topPos + 62 - 18 - 36 + 16) {
-                        EffectRenderingInventoryScreen.renderSlotHighlight(context, this.leftPos + 77 + 77, this.topPos + 62 - 18 - 36, -1000);
+                    context.renderItem(backpack, this.leftPos + 77 + 59, this.topPos + 62 - 18 - 36);
+                    if (mouseX >= this.leftPos + 77 + 59 && mouseX < this.leftPos + 77 + 59 + 16 && mouseY >= this.topPos + 62 - 18 - 36 && mouseY < this.topPos + 62 - 18 - 36 + 16) {
+                        EffectRenderingInventoryScreen.renderSlotHighlight(context, this.leftPos + 77 + 59, this.topPos + 62 - 18 - 36, -1000);
                         String button = KeybindHandler.OPEN_BACKPACK.getTranslatedKeyMessage().getString();
                         List<Component> components = new ArrayList();
                         components.add(Component.translatable("screen.travelersbackpack.open_inventory", button));
@@ -86,7 +86,7 @@ public abstract class InventoryScreenMixin extends EffectRenderingInventoryScree
     public void mouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
-            if (Minecraft.getInstance().screen instanceof InventoryScreen && ComponentUtils.getComponentOptional(player).isPresent() && ComponentUtils.getComponentOptional(player).get().hasBackpack() && TravelersBackpack.enableIntegration() && mouseX >= (double)(this.leftPos + 77 + 77) && mouseX < (double)(this.leftPos + 77 + 77 + 16) && mouseY >= (double)(this.topPos + 62 - 18 - 36) && mouseY < (double)(this.topPos + 62 - 18 - 36 + 16) && button == 0) {
+            if (Minecraft.getInstance().screen instanceof InventoryScreen && ComponentUtils.getComponentOptional(player).isPresent() && ComponentUtils.getComponentOptional(player).get().hasBackpack() && TravelersBackpack.enableIntegration() && mouseX >= (double)(this.leftPos + 77 + 59) && mouseX < (double)(this.leftPos + 77 + 59 + 16) && mouseY >= (double)(this.topPos + 62 - 18 - 36) && mouseY < (double)(this.topPos + 62 - 18 - 36 + 16) && button == 0) {
                 PacketDistributorHelper.sendToServer(new ServerboundRetrieveBackpackPacket(ComponentUtils.getComponentOptional(player).get().getBackpack().getItem().getDefaultInstance()));
             }
 
@@ -96,7 +96,7 @@ public abstract class InventoryScreenMixin extends EffectRenderingInventoryScree
                         return;
                     }
 
-                    if (mouseX >= (double)(this.leftPos + 77 + 77) && mouseX < (double)(this.leftPos + 77 + 77 + 16) && mouseY >= (double)(this.topPos + 62 - 18 - 36) && mouseY < (double)(this.topPos + 62 - 18 - 36 + 16) && button == 0) {
+                    if (mouseX >= (double)(this.leftPos + 77 + 59) && mouseX < (double)(this.leftPos + 77 + 59 + 16) && mouseY >= (double)(this.topPos + 62 - 18 - 36) && mouseY < (double)(this.topPos + 62 - 18 - 36 + 16) && button == 0) {
                         if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), 340)) {
                             player.sendSystemMessage(Component.translatable("screen.travelersbackpack.hide_icon_info"));
                         } else {

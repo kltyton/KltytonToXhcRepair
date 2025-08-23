@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#artifacts:slot/necklace"
+    "#artifacts:slot/necklace",
+    "artifacts:whoopee_cushion"
   ]
 }

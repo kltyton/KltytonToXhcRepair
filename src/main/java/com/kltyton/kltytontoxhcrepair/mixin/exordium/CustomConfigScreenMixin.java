@@ -1,4 +1,4 @@
-package com.kltyton.fabricmixintest.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.exordium;
 
 import dev.tr7zw.exordium.config.CustomConfigScreen;
 import org.spongepowered.asm.mixin.Mixin;

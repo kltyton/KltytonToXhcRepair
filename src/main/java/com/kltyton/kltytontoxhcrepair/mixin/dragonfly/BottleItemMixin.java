@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.dragonfly;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -25,7 +25,7 @@ public class BottleItemMixin extends Item {
         super(properties);
     }
 
-    // 当玩家使用瓶子时的逻辑
+    // 使用瓶子时
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void onUse(Level level, Player player, InteractionHand usedHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
         EntityType<?> betterEndDragonflyType = EntityType.byString("betterend:dragonfly").orElse(null);
@@ -47,7 +47,7 @@ public class BottleItemMixin extends Item {
         }
     }
 
-    // 将瓶子转换为 Dragon Breath 物品，并奖励玩家统计数据
+    // 将瓶子转换为 Dragon Breath 物品
     @Unique
     protected ItemStack onTurnBottleIntoItem(ItemStack bottleStack, Player player, ItemStack filledBottleStack) {
         player.awardStat(Stats.ITEM_USED.get((BottleItem)(Object)this));

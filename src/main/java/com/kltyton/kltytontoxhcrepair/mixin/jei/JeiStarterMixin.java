@@ -1,6 +1,5 @@
-package com.kltyton.fabricmixintest.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.jei;
 
-import com.kltyton.fabricmixintest.Fabricmixintest;
 import dev.ftb.mods.ftbxmodcompat.ftbquests.jei.FTBQuestsJEIIntegration;
 import mezz.jei.api.helpers.IColorHelper;
 import mezz.jei.api.recipe.transfer.IRecipeTransferManager;

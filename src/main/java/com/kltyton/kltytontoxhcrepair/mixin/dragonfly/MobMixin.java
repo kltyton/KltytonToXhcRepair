@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.dragonfly;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;

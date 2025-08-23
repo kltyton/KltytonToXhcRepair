@@ -1,4 +1,4 @@
-package com.kltyton.fabricmixintest;
+package com.kltyton.kltytontoxhcrepair.util;
 
 public interface ConfigExt {
     boolean fabricMixinTest$getEnableModdedCropAutoDetection();

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#artifacts:slot/head"
+    "#artifacts:slot/head",
+    "artifacts:whoopee_cushion"
   ]
 }

@@ -15,7 +15,7 @@ public class MagicBagItemMixin {
 
     @Inject(method = "setItem", at = @At("HEAD"), cancellable = true)
     private static void onSetItem(ItemStack bag, ItemStack stack, CallbackInfo ci) {
-        if (!stack.isEmpty() && isBanned(stack)) {
+        if (isBanned(stack)) {
             ci.cancel(); // 禁止设置
         }
     }
@@ -23,7 +23,7 @@ public class MagicBagItemMixin {
     @Inject(method = "inc", at = @At("HEAD"), cancellable = true)
     private static void onInc(ItemStack bag, int count, CallbackInfoReturnable<Boolean> cir) {
         ItemStack current = MagicBagItem.getItem(bag);
-        if (!current.isEmpty() && isBanned(current)) {
+        if (isBanned(current)) {
             cir.setReturnValue(false); // 禁止增加
         }
     }

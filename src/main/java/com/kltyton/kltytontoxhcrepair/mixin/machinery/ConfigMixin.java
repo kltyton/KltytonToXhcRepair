@@ -1,6 +1,7 @@
 package com.kltyton.kltytontoxhcrepair.mixin.machinery;
 
-import com.kltyton.fabricmixintest.ConfigExt;
+
+import com.kltyton.kltytontoxhcrepair.util.ConfigExt;
 import immersive_aircraft.config.configEntries.BooleanConfigEntry;
 import immersive_machinery.config.Config;
 import org.spongepowered.asm.mixin.Mixin;

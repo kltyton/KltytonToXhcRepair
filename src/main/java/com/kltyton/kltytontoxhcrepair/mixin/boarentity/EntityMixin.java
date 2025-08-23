@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.boarentity;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;

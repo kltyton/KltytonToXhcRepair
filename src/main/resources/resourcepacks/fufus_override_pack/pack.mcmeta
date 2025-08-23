@@ -1,6 +1,7 @@
 {
   "pack": {
     "pack_format": 9,
-    "description": "Disable SeasonHUD Slot 1.1.1"
+    "supported_formats":[0,99],
+    "description": "fufus_override_pack"
   }
 }

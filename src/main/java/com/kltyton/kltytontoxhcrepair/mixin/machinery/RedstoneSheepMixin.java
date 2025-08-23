@@ -1,6 +1,6 @@
 package com.kltyton.kltytontoxhcrepair.mixin.machinery;
 
-import com.kltyton.fabricmixintest.ConfigExt;
+import com.kltyton.kltytontoxhcrepair.util.ConfigExt;
 import immersive_machinery.config.Config;
 import immersive_machinery.entity.MachineEntity;
 import immersive_machinery.entity.NavigatingMachine;
@@ -9,10 +9,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -26,6 +29,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import vectorwing.farmersdelight.common.block.CabinetBlock;
+import vectorwing.farmersdelight.common.block.RichSoilFarmlandBlock;
 
 import java.util.Collections;
 import java.util.Objects;
@@ -33,73 +38,11 @@ import java.util.Optional;
 
 @Mixin(RedstoneSheep.class)
 public abstract class RedstoneSheepMixin extends NavigatingMachine {
-/*    // -------------- 新增工具方法 --------------
     @Unique
-    private static final Set<BlockPos> NEARBY_OFFSETS = new HashSet<>();
-
-    static {
-        // 3×3×2 的偏移量：水平 3×3，上下各 1 格
-        for (int dx = -1; dx <= 1; dx++) {
-            for (int dz = -1; dz <= 1; dz++) {
-                for (int dy = -1; dy <= 0; dy++) { // 水稻通常比脚高一格，所以 dy 只到 0
-                    NEARBY_OFFSETS.add(new BlockPos(dx, dy, dz));
-                }
-            }
-        }
+    private boolean isDirtBlock(Block block) {
+        // 涵盖原版常见泥土类方块，可根据需要扩展
+        return !(block instanceof RichSoilFarmlandBlock) && !(block instanceof CabinetBlock);
     }
-
-    *//*
-    @Unique
-    private BlockPos pickStandableNeighbor(BlockPos cropPos) {
-        if (canReach(cropPos)) {
-            return cropPos;
-        }
-        for (BlockPos off : NEARBY_OFFSETS) {
-            BlockPos stand = cropPos.offset(off);
-            if (level().getBlockState(stand).canOcclude() &&   // 有碰撞箱
-                    level().getBlockState(stand.above()).isAir()) { // 头上一格是空气
-                return stand.above();                           // 真正可站立的位置是脚上方一格
-            }
-        }
-        return cropPos; // 没找到就原地不动
-    }
-    *//*
-    @Unique
-    private boolean canReach(BlockPos pos) {
-        return false;
-*//*        if (level().getBlockState(pos.below()).is(Blocks.WATER)) System.out.println("水稻方块");
-        return !level().getBlockState(pos.below()).is(Blocks.WATER);*//*
-    }*/
-    /*    @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
-    private void tick(CallbackInfo ci) {
-        if (!this.level().isClientSide) {
-            System.out.println("日志" + task);
-            if (task != null ) {
-                System.out.println("日志2" + level().getBlockState(task).getBlock().getName());
-                this.move(MoverType.SELF, task.getCenter());
-            }
-        }
-    }*/
-/*    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Limmersive_machinery/entity/misc/PilotNavigator;hasPath()Z", ordinal = 1))
-    private boolean tick(PilotNavigator instance) {
-        if (task != null ) {
-            System.out.println("日志4444" + level().getBlockState(task).getBlock().getName());
-        }
-        return instance.hasPath();
-    }
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Limmersive_machinery/entity/RedstoneSheep;moveTo(Lnet/minecraft/core/BlockPos;)Z", ordinal = 1))
-    private boolean tick(RedstoneSheep instance, BlockPos pos) {
-        if (task != null ) {
-            System.out.println("日志33" + level().getBlockState(task).getBlock().getName());
-        }
-        return this.moveTo(pos);
-    }
-    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Ljava/util/Set;add(Ljava/lang/Object;)Z", ordinal = 0))
-    private void tick(CallbackInfo ci) {
-        if (task != null ) {
-            System.out.println("日志2" + level().getBlockState(task).getBlock().getName());
-        }
-    }*/
     /**
      * 判断给定的方块是不是两格高作物的一部分。
      * 只检查上下一格即可，绝大多数两格高作物都满足。
@@ -192,11 +135,11 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
                         : 0;
                 server.setBlockAndUpdate(pos, state.setValue(prop, resetAge));
             } else {
-                server.destroyBlock(pos, false);    // 没有 age 的一次性作物
+                if (isDirtBlock(state.getBlock())) server.destroyBlock(pos, false);    // 没有 age 的一次性作物
             }
         } else {
             /* 上方没有作物 → 当前是上半部分：直接破坏 */
-            server.destroyBlock(pos, false);
+            if (isDirtBlock(state.getBlock())) server.destroyBlock(pos, false);
         }
     }
     @Inject(method = "work", at = @At("HEAD"), cancellable = true)
@@ -257,7 +200,7 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
 
             // 如果没有成长属性或特殊处理失败，直接破坏方块
             if (!harvestSuccessful) {
-                if (shouldDestroyBlock(blockKey)) {
+                if (shouldDestroyBlock(blockKey) && isDirtBlock(block)) {
                     serverLevel.destroyBlock(pos, false);
                 }
             }
@@ -297,42 +240,10 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
 
         // 如果启用了模组作物自动检测，使用更智能的检测方法
         if (((ConfigExt) ((Object) Config.getInstance())).fabricMixinTest$getEnableModdedCropAutoDetection()) {
-            String blockName = key.toLowerCase();
-            String className = block.getClass().getSimpleName().toLowerCase();
-
-            // 通过方块名称检测作物
-            if (blockName.contains("crop") || blockName.contains("plant") ||
-                    blockName.contains("berry") || blockName.contains("bush") ||
-                    blockName.contains("vine") || blockName.contains("stem")) {
-                cir.setReturnValue(true);
-                cir.cancel();
-                return;
-            }
-
-            // 通过类名检测作物
-            if (className.contains("crop") || className.contains("plant") ||
-                    className.contains("berry") || className.contains("bush") ||
-                    className.contains("vine") || className.contains("stem")) {
-                cir.setReturnValue(true);
-                cir.cancel();
-                return;
-            }
-
-            // 检查常见模组前缀
-            String[] modPrefixes = {
-                    "farmersdelight:", "croptopia:", "pamhc2crops:", "mysticalworld:",
-                    "supplementaries:", "immersive_agriculture:", "croparia:",
-                    "mysticalagriculture:", "harvestcraft:", "actuallyadditions:",
-                    "botania:", "forestry:", "industrialcraft:", "thermalexpansion:"
-            };
-
-            for (String prefix : modPrefixes) {
-                if (blockName.startsWith(prefix)) {
-                    cir.setReturnValue(true);
-                    cir.cancel();
-                    return;
-                }
-            }
+            TagKey<Block> cropsTag = TagKey.create(BuiltInRegistries.BLOCK.key(), new ResourceLocation("c", "crops"));
+            cir.setReturnValue(BuiltInRegistries.BLOCK.getOrCreateTag(cropsTag).contains(block.builtInRegistryHolder()));
+            cir.cancel();
+            return;
         }
 
         cir.setReturnValue(false);
@@ -369,6 +280,7 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
      */
     @Unique
     private static boolean shouldDestroyBlock(String blockKey) {
+
         // 对于永久性的作物，不要破坏方块
         if (blockKey.contains("berry") && blockKey.contains("bush")) {
             return false; // 浆果丛不破坏

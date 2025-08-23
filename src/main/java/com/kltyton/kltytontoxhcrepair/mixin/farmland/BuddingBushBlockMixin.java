@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.farmland;
 
 import com.kltyton.kltytontoxhcrepair.Kltytontoxhcrepair;
 import net.minecraft.core.BlockPos;

@@ -1,13 +1,17 @@
-package com.kltyton.fabricmixintest.client;
+package com.kltyton.kltytontoxhcrepair;
 
 import com.bawnorton.mixinsquared.api.MixinCanceller;
 
 import java.util.List;
+import java.util.Set;
 
 public class TravelersBackpackMixinCanceller implements MixinCanceller {
+    // 要禁用的 mixin 全类名集合
+    private static final Set<String> CANCEL_LIST = Set.of(
+            "com.tiviacz.travelersbackpack.mixin.InventoryScreenMixin"
+    );
     @Override
     public boolean shouldCancel(List<String> targetClassNames, String mixinClassName) {
-        // 取消 TravelersBackpack 的 InventoryScreenMixin
-        return "com.tiviacz.travelersbackpack.mixin.InventoryScreenMixin".equals(mixinClassName);
+        return CANCEL_LIST.contains(mixinClassName);
     }
 }

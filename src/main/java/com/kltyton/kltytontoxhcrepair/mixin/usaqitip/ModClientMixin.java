@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.usaqitip;
 
 import com.yuntang.registry.ModClient;
 import org.spongepowered.asm.mixin.Mixin;

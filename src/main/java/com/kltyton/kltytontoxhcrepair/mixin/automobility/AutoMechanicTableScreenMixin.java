@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.automobility;
 
 import io.github.foundationgames.automobility.screen.AutoMechanicTableScreen;
 import io.github.foundationgames.automobility.screen.AutoMechanicTableScreenHandler;

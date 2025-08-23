@@ -4,22 +4,33 @@
   "version": "${version}",
   "name": "KltytonToXhcRepair",
   "description": "A mod that fixes the Utopia mechanic",
-  "authors": [],
+  "authors": ["kltyton"],
   "contact": {},
   "license": "LGPL-3.0",
   "icon": "assets/kltytontoxhcrepair/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
+    "mixinsquared": [
+      "com.kltyton.kltytontoxhcrepair.TravelersBackpackMixinCanceller"
+    ],
     "main": [
       "com.kltyton.kltytontoxhcrepair.Kltytontoxhcrepair"
+    ],
+    "client": [
+      "com.kltyton.kltytontoxhcrepair.client.KltytontoxhcrepairClient"
+    ],
+    "jei_mod_plugin": [
+      "com.kltyton.kltytontoxhcrepair.jei.BFJEIPlugin"
     ]
   },
   "mixins": [
     "kltytontoxhcrepair.mixins.json"
   ],
+  "accessWidener" : "kltyton.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "wildernature": ">=1.0.3"
   }
 }

@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.highgrass;
 
 import biomesoplenty.block.HighGrassPlantBlock;
 import net.minecraft.core.BlockPos;

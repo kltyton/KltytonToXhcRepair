@@ -1,4 +1,4 @@
-package com.kltyton.kltytontoxhcrepair.mixin;
+package com.kltyton.kltytontoxhcrepair.mixin.capefix;
 
 import nl.enjarai.cicada.util.CapeHandler;
 import org.spongepowered.asm.mixin.Mixin;

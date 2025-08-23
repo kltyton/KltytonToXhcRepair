@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.8.11'
+    id 'fabric-loom' version '1.9.2'
     id 'maven-publish'
 }
 
@@ -12,6 +12,50 @@ base {
 
 
 repositories {
+    maven { url 'https://maven.wispforest.io/releases/' }
+    maven {
+        name = 'Ladysnake Mods'
+        url = 'https://maven.ladysnake.org/releases'
+    }
+
+    maven { url = "https://maven.bawnorton.com/releases" }
+
+    // Mirror
+    maven { url = "https://maven.enjarai.dev/mirrors" }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        url = 'https://api.modrinth.com/maven'
+    }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
+    maven {
+        name = "Ladysnake Libs"
+        url = 'https://maven.ladysnake.org/releases'
+    }
+
+    maven {
+        // location of the maven that hosts JEI files before January 2023
+        name = "Progwml6's maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of the maven that hosts JEI files since January 2023
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven { url 'https://jitpack.io' }
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -26,6 +70,72 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "curse.maven:lets-do-wildernature-1071657:5623676"
+    modImplementation "curse.maven:automobility-658286:4613499"
+
+    modImplementation "curse.maven:farmers-delight-refabricated-993166:5960994"
+    modImplementation "curse.maven:lets-do-farm-charm-1038103:6561949"
+    //modImplementation "curse.maven:croptopia-415438:4997461"
+    modImplementation "curse.maven:regions-unexplored-659110:5558172"
+    modImplementation "curse.maven:popular-biology-1106419:5899116"
+    modImplementation "curse.maven:selling-bin-922334:5801904"
+    modImplementation "curse.maven:immersive-aircraft-666014:6742168"
+    modImplementation "curse.maven:immersive-machinery-1068736:6492545"
+    modImplementation "curse.maven:cicada-989574:6419779"
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.3")))
+    modImplementation "curse.maven:travelers-backpack-fabric-541171:6650310"
+
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.2.2"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.2.2"
+
+    modImplementation "curse.maven:building-wands-363392:5654679"
+    modImplementation "curse.maven:supplementaries-412082:6749364"
+    modImplementation "curse.maven:seasonhud-fabric-848022:6862202"
+
+    modImplementation(fileTree("libs/exordium-fabric-1.4.1-mc1.20.1.jar"))
+    modImplementation(fileTree("libs/bountifulfares-1.2.1-1.20.1.jar"))
+
+    modImplementation "curse.maven:architectury-api-419699:5137936"
+    modImplementation "curse.maven:the-graveyard-fabric-514468:5113229"
+    modImplementation "dev.emi:trinkets:${trinkets_version}"
+    modImplementation "curse.maven:creeper-firework-558439:5127294"
+    modImplementation "curse.maven:sodium-394468:6260639"
+    modImplementation "curse.maven:amendments-896746:6869287"
+    modImplementation "curse.maven:selene-499980:6846125"
+
+    modImplementation "curse.maven:building-but-better-989479:6803573"
+    //modImplementation(fileTree("libs/immersive_machinery-0.2.0+1.20.1.jar"))
+    //我的细胞
+    modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+    include "io.wispforest:owo-sentinel:${project.owo_version}"
+    modImplementation(fileTree("libs/minecells-2.0.0.jar"))
+
+    //搬运
+    modImplementation "curse.maven:carry-on-274259:4882498"
+
+    //达芬奇生物mod
+    modImplementation(fileTree("libs/species-1.20.1-2.3-fabric.jar"))
+
+    //jei+ftb整合
+    modImplementation "curse.maven:ftb-xmod-compat-889915:6402485"
+    // compile against the JEI API but do not include it at runtime
+    modImplementation("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
+    // at runtime, use the full JEI jar for Fabric
+    modImplementation("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+
+    //连接纹理
+    modImplementation "curse.maven:continuity-531351:5962874"
+    modImplementation "curse.maven:diagonal-windows-891328:5918169"
+    modImplementation(fileTree("libs/diagonalblocks-fabric-8.0.6.jar"))
+
+    //BiomesOPlenty
+    modImplementation "curse.maven:biomes-o-plenty-220318:6364066"
+    modImplementation "com.github.quiqueck:BCLib:${project.bclib_version}"
+
+    modImplementation "curse.maven:dynamic-crosshair-623800:6779760"
+}
+loom {
+    accessWidenerPath = file("src/main/resources/kltyton.accesswidener")
 }
 
 processResources {
@@ -69,7 +179,6 @@ jar {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
-
 // configure the maven publication
 publishing {
     publications {
