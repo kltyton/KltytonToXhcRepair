@@ -16,6 +16,7 @@
     "bug.minecraft.TagLoaderMixin",
     "bug.owo.MineCellsItemGroupsMixin",
     "bug.supplementaries.SackBlockMixin",
+    "bug.supplementaries.SpecialRecipeDisplaysMixin",
     "capefix.CapeHandlerMixin",
     "deer.DeerEntityMixin",
     "dragonfly.BottleItemMixin",
