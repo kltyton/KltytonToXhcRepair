@@ -23,49 +23,49 @@ import java.util.List;
 @Mixin(MineCellsItemGroups.class)
 public abstract class MineCellsItemGroupsMixin {
     @Mutable
-    @Shadow
+    @Shadow(remap = false)
     @Final
     public static OwoItemGroup MINECELLS;
 
     @Mutable
-    @Shadow
+    @Shadow(remap = false)
     @Final
     public static ItemGroupTab GENERAL_TAB;
 
     @Mutable
-    @Shadow
+    @Shadow(remap = false)
     @Final
     public static ItemGroupTab COMBAT_TAB;
 
     @Mutable
-    @Shadow
+    @Shadow(remap = false)
     @Final
     public static ItemGroupTab SPAWN_EGGS_TAB;
 
-    @Shadow
+    @Shadow(remap = false)
     public static ItemGroupButton linkButton(Icon icon, String name, String url) {return null;}
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static ResourceLocation DISCORD_ICON;
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static ResourceLocation KOFI_ICON;
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static ResourceLocation BACKGROUND;
 
-    @Shadow
+    @Shadow(remap = false)
     private static Component getTabTitle(String componentName) {return null;}
 
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static ResourceLocation TABS;
 
-    @Shadow
+    @Shadow(remap = false)
     private static ItemStack stack(ItemLike item) {return null;}
 
     @Inject(method = "generalStacks", at = @At("TAIL"))

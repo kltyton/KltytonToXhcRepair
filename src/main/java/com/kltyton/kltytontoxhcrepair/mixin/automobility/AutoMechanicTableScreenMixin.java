@@ -25,10 +25,10 @@ import java.util.List;
 @Mixin(AutoMechanicTableScreen.class)
 public abstract class AutoMechanicTableScreenMixin extends AbstractContainerScreen<AutoMechanicTableScreenHandler> {
 
-    @Shadow
+    @Shadow(remap = false)
     private long time;
 
-    @Shadow
+    @Shadow(remap = false)
     protected void drawMissingIngredient(GuiGraphics graphics, Ingredient ing, int x, int y) {
     }
     public AutoMechanicTableScreenMixin(AutoMechanicTableScreenHandler handler, Inventory inventory, Component title) {

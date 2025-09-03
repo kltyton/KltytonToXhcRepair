@@ -29,7 +29,7 @@ public class MillingCategory implements IRecipeCategory<MillingRecipe> {
 
     @Override public @NotNull RecipeType<MillingRecipe> getRecipeType() { return BFJEIRecipeTypes.MILLING; }
     @Override public @NotNull Component getTitle() { return Component.translatable("jei.bountifulfares.milling"); }
-    @Override public IDrawable getBackground() { return background; }
+    @Override @SuppressWarnings("removal") public IDrawable getBackground() { return background; }
     @Override public IDrawable getIcon() { return icon; }
 
     @Override

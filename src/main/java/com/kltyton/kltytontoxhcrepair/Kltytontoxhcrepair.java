@@ -1,5 +1,6 @@
 package com.kltyton.kltytontoxhcrepair;
 
+import com.kltyton.kltytontoxhcrepair.network.ModNetwork;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -30,6 +31,8 @@ public class Kltytontoxhcrepair implements ModInitializer {
                 Component.literal("fufus_override_pack"),
                 ResourcePackActivationType.ALWAYS_ENABLED // 永远启用
         );
+
+        ModNetwork.Server.init();
 
     }
 }

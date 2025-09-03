@@ -18,7 +18,7 @@ import java.util.Map;
 @Pseudo
 @Mixin(Config.class)
 public abstract class ConfigMixin implements ConfigExt {
-    @Inject(method = "<init>", at = @At("RETURN"))
+    @Inject(method = "<init>", at = @At("RETURN"), remap = false)
     private void onInit(String name, CallbackInfo ci) {
         // 获取 Config 实例
         Config config = (Config) (Object) this;

@@ -1,16 +1,12 @@
 package com.kltyton.kltytontoxhcrepair.network;
 
-import com.ninni.species.entity.Cruncher;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
 
 public class ModNetwork {
     //public static final ResourceLocation OPEN_CRUNCHER_SCREEN = new ResourceLocation("kltyton", "open_cruncher_screen");
+    //public static final ResourceLocation SYNC_INV = new ResourceLocation("kltytontoxhcrepair", "sync_inventory");
+
     @Environment(EnvType.CLIENT)
     public static class Client {
         public static void init() {
@@ -35,6 +31,10 @@ public class ModNetwork {
                     }
                 });
             });*/
+        }
+    }
+    public static class Server {
+        public static void init() {
         }
     }
 }

@@ -13,16 +13,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(PilotNavigator.class)
 public abstract class PilotNavigatorMixin {
-    @Shadow @Final private VehicleEntity vehicle;
-    @Shadow @Final private int accuracy;
+    @Shadow(remap = false) @Final private VehicleEntity vehicle;
+    @Shadow(remap = false) @Final private int accuracy;
 
-    @Shadow private BlockPos target;
+    @Shadow(remap = false) private BlockPos target;
 
-    @Shadow private int stuckTime;
+    @Shadow(remap = false) private int stuckTime;
 
-    @Shadow private Path currentPath;
+    @Shadow(remap = false) private Path currentPath;
 
-    @Shadow protected abstract Path findPath(BlockPos pos);
+    @Shadow(remap = false) protected abstract Path findPath(BlockPos pos);
 
     @Inject(method = "moveTo", at = @At("HEAD"), cancellable = true)
     private void onMoveTo(BlockPos pos, CallbackInfo ci) {

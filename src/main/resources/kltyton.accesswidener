@@ -9,4 +9,5 @@ accessible method net/minecraft/world/level/block/WallBlock isConnected (Lnet/mi
 accessible field net/minecraft/tags/TagEntry id Lnet/minecraft/resources/ResourceLocation;
 accessible field net/minecraft/tags/TagEntry tag Z
 accessible field com/mojang/blaze3d/platform/GlStateManager BLEND Lcom/mojang/blaze3d/platform/GlStateManager$BlendState;
+accessible field net/minecraft/network/protocol/game/ClientboundContainerSetSlotPacket slot I
 

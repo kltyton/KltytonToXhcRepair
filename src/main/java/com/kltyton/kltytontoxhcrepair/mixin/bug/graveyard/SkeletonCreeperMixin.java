@@ -39,7 +39,7 @@ import java.util.Set;
 @Pseudo
 @Mixin(SkeletonCreeper.class)
 public abstract class SkeletonCreeperMixin extends Creeper {
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private double explosionRadius;
 

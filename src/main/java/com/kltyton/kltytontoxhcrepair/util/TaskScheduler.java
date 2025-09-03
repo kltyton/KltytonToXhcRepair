@@ -20,8 +20,8 @@ public class TaskScheduler {
                     try {
                         task.runnable.run();
                     } catch (Exception e) {
-                        e.printStackTrace();
                         Kltytontoxhcrepair.LOGGER.error("[KltytonToXhcRepair] 运行计划任务时出错。");
+                        throw new RuntimeException(e);
                     }
                     it.remove();
                 }

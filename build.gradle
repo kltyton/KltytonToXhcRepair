@@ -56,6 +56,14 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven { url 'https://jitpack.io' }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex("software\\.bernie.*")
+            includeGroup("com.eliotlash.mclib")
+        }
+    }
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -133,6 +141,14 @@ dependencies {
     modImplementation "com.github.quiqueck:BCLib:${project.bclib_version}"
 
     modImplementation "curse.maven:dynamic-crosshair-623800:6779760"
+    //酿造台
+    modImplementation "curse.maven:lets-do-brewery-farm-charm-compat-1038106:6847828"
+
+    //时装渲染
+    modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
+    modImplementation "curse.maven:cosmetic-armor-fabric-436659:4646421"
+    modImplementation "curse.maven:dragonloot-424480:4656260"
 }
 loom {
     accessWidenerPath = file("src/main/resources/kltyton.accesswidener")
