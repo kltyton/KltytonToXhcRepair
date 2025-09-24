@@ -5,6 +5,7 @@ import io.github.apace100.cosmetic_armor.CosmeticArmor;
 import net.dragonloot.init.ItemInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +25,7 @@ public class HeadFeatureRendererMixin {
             method = "@MixinSquared:Handler",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;"))
     public ItemStack getItemBySlot(LivingEntity instance, EquipmentSlot equipmentSlot) {
+        //if (!FabricLoader.getInstance().isModLoaded("cosmetic-armor")) return instance.getItemBySlot(equipmentSlot);
         ItemStack itemStack = instance.getItemBySlot(equipmentSlot);
         if (!itemStack.isEmpty() && itemStack.getItem() == ItemInit.DRAGON_HELMET) {
             ItemStack cosmeticStack = CosmeticArmor.getCosmeticArmor(instance, equipmentSlot);

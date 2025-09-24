@@ -149,6 +149,19 @@ dependencies {
     implementation("com.eliotlash.mclib:mclib:20")
     modImplementation "curse.maven:cosmetic-armor-fabric-436659:4646421"
     modImplementation "curse.maven:dragonloot-424480:4656260"
+
+    //擀面杖
+    modImplementation "curse.maven:lets-do-bakery-farm-charm-compat-1038130:6847991"
+    modImplementation "curse.maven:ubes-delight-903894:6822207"
+
+    //白线修复
+    modImplementation "curse.maven:model-gap-fix-676136:5200948"
+
+    //JER
+    modImplementation "curse.maven:just-enough-resources-jer-240630:5057223"
+
+    //苹果皮
+    modImplementation "curse.maven:appleskin-248787:4770825"
 }
 loom {
     accessWidenerPath = file("src/main/resources/kltyton.accesswidener")

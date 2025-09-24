@@ -2,6 +2,7 @@ package com.kltyton.kltytontoxhcrepair.mixin.bug.geckolib;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.apace100.cosmetic_armor.CosmeticArmor;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
@@ -37,6 +38,7 @@ public abstract class MixinHumanoidArmorLayer<T extends LivingEntity, A extends 
 
     @ModifyArg(method = "renderArmorPiece", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/layers/HumanoidArmorLayer;renderModel(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/item/ArmorItem;Lnet/minecraft/client/model/HumanoidModel;ZFFFLjava/lang/String;)V"), index = 4)
     public A injectArmor(A humanoidModel) {
+        // if (!FabricLoader.getInstance().isModLoaded("cosmetic-armor")) return (A)RenderProvider.of(this.gl_storedItemStack).getGenericArmorModel(this.gl_storedEntity, this.gl_storedItemStack, this.gl_storedSlot, (HumanoidModel<LivingEntity>) humanoidModel);
         ItemStack cosmeticStack = CosmeticArmor.getCosmeticArmor(gl_storedEntity, this.gl_storedSlot);
         if (!cosmeticStack.isEmpty() && (this.gl_storedItemStack.isEmpty() || !this.gl_storedItemStack.is(CosmeticArmor.ALWAYS_VISIBLE))) {
             return humanoidModel;

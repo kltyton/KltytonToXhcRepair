@@ -14,7 +14,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
@@ -231,7 +230,7 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
             return;
         }
         // 如果启用了类检测，检查是否为原版作物类型
-        if (((ConfigExt) ((Object) Config.getInstance())).fabricMixinTest$getEnableCropClassDetection()) {
+        if (((ConfigExt) ((Object) Config.getInstance())).getEnableCropClassDetection()) {
             if (block instanceof CropBlock || block instanceof NetherWartBlock ||
                     block instanceof CocoaBlock || block instanceof PitcherCropBlock) {
                 cir.setReturnValue(true);
@@ -241,7 +240,7 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
         }
 
         // 如果启用了模组作物自动检测，使用更智能的检测方法
-        if (((ConfigExt) ((Object) Config.getInstance())).fabricMixinTest$getEnableModdedCropAutoDetection()) {
+        if (((ConfigExt) ((Object) Config.getInstance())).getEnableModdedCropAutoDetection()) {
             TagKey<Block> cropsTag = TagKey.create(BuiltInRegistries.BLOCK.key(), new ResourceLocation("c", "crops"));
             cir.setReturnValue(BuiltInRegistries.BLOCK.getOrCreateTag(cropsTag).contains(block.builtInRegistryHolder()));
             cir.cancel();
@@ -310,8 +309,18 @@ public abstract class RedstoneSheepMixin extends NavigatingMachine {
     }
     @Inject(method = "getAgeProperty", at = @At("HEAD"), cancellable = true)
     private static void getAgeProperty(BlockState state, CallbackInfoReturnable<Optional<Property<Integer>>> cir) {
+        ConfigExt config = (ConfigExt) (Object) Config.getInstance();
+        String[] supportedProps = config.getSupportedMaturityProperties();
+        // 🔥 关键修复：防止 null
+
+        if (supportedProps == null) {
+            cir.setReturnValue(Optional.empty());
+            cir.cancel();
+            return;
+        }
+
         // 尝试所有支持的成熟度属性名称
-        for (String propertyName : ((ConfigExt) ((Object) Config.getInstance())).fabricMixinTest$getSupportedMaturityProperties()) {
+        for (String propertyName : ((ConfigExt) ((Object) Config.getInstance())).getSupportedMaturityProperties()) {
             for (Property<?> property : state.getProperties()) {
                 if (property.getName().equals(propertyName)) {
                     try {

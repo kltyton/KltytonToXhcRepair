@@ -4,9 +4,7 @@ package com.kltyton.kltytontoxhcrepair.mixin.machinery;
 import com.kltyton.kltytontoxhcrepair.util.ConfigExt;
 import immersive_aircraft.config.configEntries.BooleanConfigEntry;
 import immersive_machinery.config.Config;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Pseudo;
-import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Pseudo
+@Implements(@Interface(iface = ConfigExt.class, prefix = "fabricMixinTest$"))
 @Mixin(Config.class)
 public abstract class ConfigMixin implements ConfigExt {
     @Inject(method = "<init>", at = @At("RETURN"), remap = false)
@@ -104,18 +103,15 @@ public abstract class ConfigMixin implements ConfigExt {
     @BooleanConfigEntry(true)
     public boolean enableCropClassDetection;
     @Unique
-    @Override
     public boolean fabricMixinTest$getEnableModdedCropAutoDetection() {
         return enableModdedCropAutoDetection;
     }
     @Unique
-    @Override
     public boolean fabricMixinTest$getEnableCropClassDetection() {
         return enableCropClassDetection;
     }
     @Unique
-    @Override
     public String[] fabricMixinTest$getSupportedMaturityProperties() {
-        return supportedMaturityProperties;
+        return this.supportedMaturityProperties == null ? new String[0] : this.supportedMaturityProperties;
     }
 }

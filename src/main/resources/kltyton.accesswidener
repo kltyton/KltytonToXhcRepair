@@ -10,4 +10,8 @@ accessible field net/minecraft/tags/TagEntry id Lnet/minecraft/resources/Resourc
 accessible field net/minecraft/tags/TagEntry tag Z
 accessible field com/mojang/blaze3d/platform/GlStateManager BLEND Lcom/mojang/blaze3d/platform/GlStateManager$BlendState;
 accessible field net/minecraft/network/protocol/game/ClientboundContainerSetSlotPacket slot I
-
+accessible class net/minecraft/client/renderer/block/model/ItemModelGenerator$Span
+accessible class net/minecraft/client/renderer/block/model/ItemModelGenerator$SpanFacing
+accessible method net/minecraft/world/level/block/WallBlock updateShape (Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;ZZZZ)Lnet/minecraft/world/level/block/state/BlockState;
+accessible method net/minecraft/world/level/block/WallBlock topUpdate (Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+accessible method net/minecraft/world/level/block/WallBlock applyWallShape (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/level/block/state/properties/WallSide;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;)Lnet/minecraft/world/phys/shapes/VoxelShape;
