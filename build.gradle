@@ -113,6 +113,8 @@ dependencies {
 
     modImplementation "curse.maven:building-but-better-989479:6803573"
     //modImplementation(fileTree("libs/immersive_machinery-0.2.0+1.20.1.jar"))
+    modImplementation "curse.maven:harvest-with-ease-602171:5968746"
+
     //我的细胞
     modImplementation "io.wispforest:owo-lib:${project.owo_version}"
     include "io.wispforest:owo-sentinel:${project.owo_version}"
