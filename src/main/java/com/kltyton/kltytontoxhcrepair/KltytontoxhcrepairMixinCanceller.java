@@ -5,7 +5,7 @@ import com.bawnorton.mixinsquared.api.MixinCanceller;
 import java.util.List;
 import java.util.Set;
 
-public class TravelersBackpackMixinCanceller implements MixinCanceller {
+public class KltytontoxhcrepairMixinCanceller implements MixinCanceller {
     // 要禁用的 mixin 全类名集合
     private static final Set<String> CANCEL_LIST = Set.of(
             "com.tiviacz.travelersbackpack.mixin.InventoryScreenMixin",

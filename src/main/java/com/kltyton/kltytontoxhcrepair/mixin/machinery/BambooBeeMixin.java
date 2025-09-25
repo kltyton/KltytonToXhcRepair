@@ -35,17 +35,14 @@ public abstract class BambooBeeMixin extends NavigatingMachine {
     private boolean filter(ItemStack stack) {
         List<ItemStack> slots = this.getSlots(Common.SLOT_FILTER);
         if (this.isEmpty(slots)) {
-            // 空过滤槽 → 默认允许
             return true;
         }
 
         boolean match = slots.stream().anyMatch((other) -> this.match(stack, other));
 
         if (this.configuration.blacklist) {
-            // 黑名单模式：匹配的被禁止
             return !match;
         } else {
-            // 白名单模式：只有匹配的允许
             return match;
         }
     }

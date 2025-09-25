@@ -11,7 +11,7 @@
   "environment": "*",
   "entrypoints": {
     "mixinsquared": [
-      "com.kltyton.kltytontoxhcrepair.TravelersBackpackMixinCanceller"
+      "com.kltyton.kltytontoxhcrepair.KltytontoxhcrepairMixinCanceller"
     ],
     "main": [
       "com.kltyton.kltytontoxhcrepair.Kltytontoxhcrepair"
