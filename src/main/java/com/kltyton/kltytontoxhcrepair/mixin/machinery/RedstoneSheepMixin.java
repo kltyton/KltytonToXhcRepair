@@ -37,10 +37,10 @@ import java.util.Optional;
 @Pseudo
 @Mixin(RedstoneSheep.class)
 public abstract class RedstoneSheepMixin extends NavigatingMachine {
-    @Shadow
+    @Shadow(remap = false)
     private int reloadingTicks;
 
-    @Shadow
+    @Shadow(remap = false)
     private int rescanningTicks;
 
 

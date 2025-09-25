@@ -32,6 +32,7 @@
     "farmland.TomatoCropBlockMixin",
     "highgrass.HighGrassPlantBlockMixin",
     "jei.JeiStarterMixin",
+    "machinery.BambooBeeMixin",
     "machinery.PilotNavigatorMixin",
     "machinery.RedstoneSheepMixin",
     "usaqitip.ModSpawnMixin"
