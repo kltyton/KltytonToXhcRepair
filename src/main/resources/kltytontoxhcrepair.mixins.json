@@ -21,6 +21,8 @@
     "bug.owo.MineCellsItemGroupsMixin",
     "bug.supplementaries.SackBlockMixin",
     "bug.supplementaries.SpecialRecipeDisplaysMixin",
+    "bug.things.AgglomerationItemMixin",
+    "bug.travelersbackpack.FeedingUpgradeMixin",
     "capefix.CapeHandlerMixin",
     "deer.DeerEntityMixin",
     "dragonfly.BottleItemMixin",

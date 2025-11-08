@@ -91,7 +91,7 @@ dependencies {
     modImplementation "curse.maven:immersive-machinery-1068736:6492545"
     modImplementation "curse.maven:cicada-989574:6419779"
     include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.3")))
-    modImplementation "curse.maven:travelers-backpack-fabric-541171:6650310"
+    modImplementation "curse.maven:travelers-backpack-fabric-541171:7186064"
 
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.2.2"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.2.2"
@@ -164,6 +164,14 @@ dependencies {
 
     //苹果皮
     modImplementation "curse.maven:appleskin-248787:4770825"
+    //聚合物
+    modImplementation "curse.maven:things-fabric-456151:4921204"
+    modImplementation "curse.maven:artifacts-312353:6351710"
+
+    //滑翔伞
+    modImplementation "curse.maven:paragliders-289240:5046071"
+    //潜水
+    modImplementation "curse.maven:hybrid-aquatic-834427:7157690"
 }
 loom {
     accessWidenerPath = file("src/main/resources/kltyton.accesswidener")
