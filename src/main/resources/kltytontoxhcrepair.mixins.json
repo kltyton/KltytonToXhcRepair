@@ -23,6 +23,7 @@
     "bug.supplementaries.SpecialRecipeDisplaysMixin",
     "bug.things.AgglomerationItemMixin",
     "bug.travelersbackpack.FeedingUpgradeMixin",
+    "campfire.CampfireEventMixin",
     "capefix.CapeHandlerMixin",
     "deer.DeerEntityMixin",
     "dragonfly.BottleItemMixin",

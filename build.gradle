@@ -172,6 +172,9 @@ dependencies {
     modImplementation "curse.maven:paragliders-289240:5046071"
     //潜水
     modImplementation "curse.maven:hybrid-aquatic-834427:7157690"
+
+    //篝火
+    modImplementation "curse.maven:healing-campfire-342623:6185733"
 }
 loom {
     accessWidenerPath = file("src/main/resources/kltyton.accesswidener")
